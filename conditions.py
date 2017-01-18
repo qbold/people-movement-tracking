@@ -10,7 +10,6 @@ def in_polygon(x, y, xp, yp):
        return True
    return False
 
-
 # Return true if each pixel value is less than 40
 # False otherwise
 def treshold(pixel):

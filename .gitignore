@@ -24,6 +24,7 @@ lib64/
 parts/
 sdist/
 var/
+__pycahe__/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -52,4 +53,4 @@ venv/
 ENV/
 
 .gitignore
-.idea/vcs.xml
+.idea/
