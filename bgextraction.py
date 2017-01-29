@@ -7,7 +7,8 @@ output_path = r'output'
 if not os.path.exists(output_path):
     os.makedirs(output_path)
 
-bg_filepath = 'output/side-view.jpg'
+bg_path = 'output/side-view-fish-eye.jpg'
+
 
 def extract_background(video):
     """Receives a video filename(with extension) and returns the extracted background"""
@@ -31,7 +32,7 @@ def extract_background(video):
 
         print("Saving background...")
         vid_cap.release()
-        cv2.imwrite(bg_filepath, avg_img)
+        cv2.imwrite(bg_path, avg_img)
     else:
         raise IOError("Could not open video")
 

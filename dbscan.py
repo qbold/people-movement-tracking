@@ -72,22 +72,21 @@ def region_query_test(distances):
 
 def show_clusters_on_frame(classifications):
     pts = np.loadtxt("foreground_unnormalized.txt", dtype=int)
-    cap = cv2.VideoCapture("data/0001_L.mp4")
-    #for i in range(5001):
+    cap = cv2.VideoCapture("data/z-cam_point1.mp4")
     _, f = cap.read()
     clusters = np.unique(classifications)
-    colors = np.array([0, 0, 0])
-    for i in range(1, clusters.size):
-        new_color = np.array([random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)])
-        colors = np.vstack((colors, new_color))
-    # print "colors:", colors
-    cv2.imshow("Original", f)
-    cv2.imwrite("dbscan-input.jpg", f)
+    # colors = np.array([0, 0, 0])
+
+    # for i in range(1, clusters.size):
+    #     new_color = np.array([random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)])
+    #     colors = np.vstack((colors, new_color))
+
     for i in range(classifications.size):
         c = classifications[i, 0]
         if c == NOISE:
             continue
-        color = colors[c, :]
+        # color = tuple(colors[c])
+        color = (128, 50, 123)
         x = pts[i, 0]
         y = pts[i, 1]
         cv2.circle(f, (y, x), 1, color, thickness=-1)
@@ -101,7 +100,6 @@ def show_clusters_on_frame(classifications):
         cv2.circle(f, (y, x), radius=10, color=yellow, thickness=1)
 
     cv2.imshow("DBSCAN clustering", f)
-    cv2.imwrite("dbscan-clusters.jpg", f)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     cap.release()
@@ -141,7 +139,7 @@ def main():
     # region_query_test(distances)
     for i in range(20, 21):
         j = i / 1000.
-        dbscan_test(distances, eps=j, min_points=30)
+        dbscan_test(distances, eps=j, min_points=2)
 
 
 main()

@@ -53,4 +53,4 @@ venv/
 ENV/
 
 .gitignore
-.idea/
+labeling.py

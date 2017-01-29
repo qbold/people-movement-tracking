@@ -18,22 +18,22 @@ def distance_matrix(points):
     dm = np.zeros([n_points, n_points])
     for i in range(n_points):
         for j in range(n_points):
-            if (i > j):
+            if i > j:
                 dm[i, j] = dm[j, i]
                 continue
-            if (i < j):
+            if i < j:
                 p = points[i, :]
                 q = points[j, :]
                 dm[i, j] = euclidean_distance(p, q)
     return dm
 
-def main():
-    pts = np.loadtxt("foreground.txt")
-    print("points:", pts.shape)
-    start_time = time.time()
-    distances = distance_matrix(pts)
-    print("Distance matrix %s (%ds)" % (str(distances.shape), time.time() - start_time))
-    np.savetxt("distance.txt.gz", distances, '%5.8f')
-
-main()
-print("Done!")
+# def main():
+#     pts = np.loadtxt("foreground.txt")
+#     print("points:", pts.shape)
+#     start_time = time.time()
+#     distances = distance_matrix(pts)
+#     print("Distance matrix %s (%ds)" % (str(distances.shape), time.time() - start_time))
+#     np.savetxt("distance.txt.gz", distances, '%5.8f')
+#
+# main()
+# print("Done!")
